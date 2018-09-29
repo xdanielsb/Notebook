@@ -13,15 +13,24 @@ struct point {
     x = _x;
     y = _y;
   }
-  point operator + (point p) const { return point(p.x + x, p.y +y);  }
-  point operator - (point p) const { return point(x - p.x, y -p.y);  }
-  point operator *(double d) const { return point(x*d, y*d); }
-  bool operator ==(point p) const { return p.x == x && p.y==y; }
-  double dot(point p) { return x*p.x + y*p.y;};
-  double cross2(point p) { return x*p.y - p.x*y;};
-  double mag () {return sqrt(x*x + y*y);};
-  double norm() {return x*x + y*y;};
-  double dist(point p2){return hypot(x - p2.x, y - p2.y); };
+  point operator + (point p) const { 
+    return point(p.x + x, p.y +y);  }
+  point operator - (point p) const { 
+    return point(x - p.x, y -p.y);  }
+  point operator *(double d) const {
+    return point(x*d, y*d); }
+  bool operator ==(point p) const { 
+    return p.x == x && p.y==y; }
+  double dot(point p) { 
+    return x*p.x + y*p.y;};
+  double cross2(point p) { 
+    return x*p.y - p.x*y;};
+  double mag () {
+    return sqrt(x*x + y*y);};
+  double norm() {
+    return x*x + y*y;};
+  double dist(point p2){
+    return hypot(x - p2.x, y - p2.y); };
   void show(){ printf("x= %lf, y=%lf\n", x, y);}
 };
 

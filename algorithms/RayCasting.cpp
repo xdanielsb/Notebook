@@ -20,10 +20,14 @@ struct vert {
 };
 typedef vector < point > polygon;
 
-inline ld cross(point o, point d){ return(o.x * d.y)  - ( o.y * d.x); }
-inline ld dot(point o, point d){ return (o.x * d.x)  + ( o.y * d.y); }
-inline point diff(point o, point d){ return {d.x-o.x, d.y - o.y} ;}
-inline ld dist(point o, point d){ return  sqrt(dot(diff(o,d) , diff(o,d))); }
+inline ld cross(point o, point d){ 
+  return(o.x * d.y)  - ( o.y * d.x); }
+inline ld dot(point o, point d){ 
+  return (o.x * d.x)  + ( o.y * d.y); }
+inline point diff(point o, point d){
+  return {d.x-o.x, d.y - o.y} ;}
+inline ld dist(point o, point d){
+  return  sqrt(dot(diff(o,d) , diff(o,d))); }
 
 inline  bool segments_parallel(point a, point b, point c){
     return abs(cross(diff(c,a),diff(b,a)))  == 0;

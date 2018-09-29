@@ -71,8 +71,8 @@ int main(){
         }
         printf("\n\n");
       */
-		}	
-		cout << res <<endl;
-	}
-	return 0;
+    }	
+    cout << res <<endl;
+  }
+  return 0;
 }

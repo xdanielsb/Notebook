@@ -12,10 +12,14 @@ struct point {
     x = _x;
     y = _y;
   }
-  point operator + (point p) const { return point(p.x + x, p.y +y);  }
-  point operator - (point p) const { return point(x - p.x, y -p.y);  }
-  bool operator == (point p) const { return x==p.x && y ==p.y; }
-  bool operator <(point p) const { return p.x < x || p.y<y; } // set vis
+  point operator + (point p) const { 
+    return point(p.x + x, p.y +y);  }
+  point operator - (point p) const {
+    return point(x - p.x, y -p.y);  }
+  bool operator == (point p) const {
+    return x==p.x && y ==p.y; }
+  bool operator <(point p) const {
+    return p.x < x || p.y<y; } // set vis
   void show(){ printf("x= %d, y=%d\n", x, y);}
 };
 
