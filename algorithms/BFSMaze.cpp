@@ -56,9 +56,9 @@ bool sol(point in){
 
 
 int main(){
-	#ifdef LOCAL
-		freopen("in.c", "r", stdin);
-	#endif
+  #ifdef LOCAL
+   freopen("in.c", "r", stdin);
+  #endif
   vis.clear();
   //rows and cols
   cin >> r  >> c;
