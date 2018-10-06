@@ -1,43 +1,28 @@
 #include <bits/stdc++.h>
-#define endl '\n'
-#define MAX 1000001
 #define pb push_back
 using namespace std;
-typedef long long lld;
-int z[MAX]; //zarray
-vector<int> matches;
+typedef vector<int> vi;
 
 //Complexity: O(N + M)
-
-inline void zAlgorithm(string s, int m){
-  int len = s.length();
-  int l = 0, r = 0;
-  for (int i = 1 ;i < len; i++){
-    if (i > r) {
-      l = r = i;
-      while (r < len && s[r-l] == s[r]) r++;
-      z[i] = r-l;
-      r--;
-    }else {
-      int k = i - l;
-      if (z[k] < r-i+1) z[i] = z[k];
-      else {
-        l = i;
-        while (r < len && s[r-l] == s[r]) r++;
-        z[i] = r - l;
-        r--;
-      }
-    }
-    if (z[i] == m) matches.pb(i - m - 1);
+vi z_val(string s){
+  int n = s.size();
+  vi z(n);
+  for( int  i = 1, l= 0, r=0; i< n; i++){
+    if( i <=r) 
+      z[i] = min( r-i+1, z[i-l]);
+    while( i+z[i] <n && s[ z[i] ] == s[i +z[i]])
+      z[i]++;
+    if( i+ z[i] -1 > r) 
+      l = i, r = i+z[i] -1;
   }
+  return z;
 }
 
 int main() {
   string haystack = "abcabc", needle = "abc";
   int n = haystack.size(), m = needle.size();
-  zAlgorithm(needle + "#" + haystack, m);
-  cout << ("locations where start to match. \n");
-  for (int i=0;i<matches.size();i++) cout << matches[i] << " ";
-  cout << endl <<"Number of matches: " << matches.size() << endl;
+  vi z = z_val(needle + "#" + haystack);
+  for( int i = 0; i < n+m; i ++)
+    cout << i << " "<< z[i] <<endl;
   return 0;
 }
