@@ -1,45 +1,44 @@
-#include <bits/stdc++.h> 
-using namespace std; 
-const int N = 100000;  
-int n; 
-int tree[2 * N]; 
-void build( int arr[]){  
-  // insert leaf nodes in tree 
-  for (int i=0; i<n; i++) tree[n+i] = arr[i]; 
-  // build the tree by calculating parents  
-  for (int i = n - 1; i > 0; --i)      
-  tree[i] = tree[i<<1] + tree[i<<1 | 1];     
+#include <iostream>
+using namespace std;
+const int N = 1e5 + 10;
+int n, q;
+int t[2 * N];
+
+int op( int a, int b){
+  return min(a, b);
 }
-// function to update a tree node 
-void updateTreeNode(int p, int value){  
-  // set value at position p 
-  tree[p+n] = value; 
-  p = p+n;     
-  // move upward and update parents 
-  for (int i=p; i > 1; i >>= 1) 
-  tree[i>>1] = tree[i] + tree[i^1]; 
-}  
-// function to get sum on interval [l, r) 
-int query(int l, int r)  {  
-  int res = 0;     
-  // loop to find the sum in the range 
-  for (l += n, r += n; l < r; l >>= 1, r >>= 1) { 
-    if (l&1)  res += tree[l++]; 
-    if (r&1) res += tree[--r]; 
-  }     
-  return res; 
-} 
-int main(){ 
-  int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}; 
-  // n is global 
-  n = sizeof(a)/sizeof(a[0]);     
-  // build tree  
-  build(a);     
-  // print the sum in range(1,2) index-based 
-  cout << query(0, 3)<<endl;   
-  // modify element at 2nd index 
-  updateTreeNode(2, 1); 
-  // print the sum in range(1,2) index-based 
-  cout << query(1, 3)<<endl; 
-  return 0; 
-} 
+void update(int x, int y) {
+  for (t[x += n] = y; x > 1; x >>= 1) {
+    t[x >> 1] = op(t[x], t[x ^ 1]);
+  }
+}
+int query(int l, int r) {
+  int res = 1e8;
+  for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
+    if (l & 1) res = op(res, t[l++]);
+    if (r & 1) res = op(t[--r], res);
+  }
+  return res;
+}
+int main() {
+  cin >> n >> q;
+  for (int i = 0; i < n; i++) {
+    cin >> t[i + n];
+  }
+  for (int i = n - 1; i > 0; i--) {
+    t[i] = op(t[i << 1], t[i << 1 | 1]);
+  }
+  char qt;
+  int l, r;
+  while (q--) {
+    cin >> qt;
+    if (qt == 'q') {
+      cin >> l >> r;
+      cout << query(l - 1, r) << "\n";
+    } else {
+      cin >> l >> r;
+      update(l - 1, r);
+    }
+  }
+  return 0;
+}
