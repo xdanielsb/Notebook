@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef vector<int> vi;
+/*
+ Complexity O(log(n))
+*/
 struct union_find {
   vi p;
   union_find(int n) : p(n, -1) { }

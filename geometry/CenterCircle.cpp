@@ -2,6 +2,9 @@
 using namespace std;
 const double PI = acos(-1);
 #define show(x) cout << #x << " = " << x << endl;
+/*
+ Complexity O(1)
+*/
 struct pt {
   double x;
   double y;

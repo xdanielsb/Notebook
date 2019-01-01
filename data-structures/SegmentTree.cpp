@@ -4,6 +4,12 @@ const int N = 1e5 + 10;
 int n, q;
 int t[2 * N];
 
+/*
+ Complexity Query O(log(n))
+            Create O(n^2)
+            Update O(n^2)
+*/
+
 int op( int a, int b){
   return min(a, b);
 }
