@@ -5,7 +5,7 @@ typedef long long ll;
 /*
  * Largest Sum Contiguous Subarray
  * Kadane Algorithm
- * Complexity O(n)
+ * Complexity: O(n)
  */
 inline ll kadane(ll data[8], int size){
   ll m1= data[0];

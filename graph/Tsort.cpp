@@ -12,12 +12,9 @@ int N;
 vector < vi > G;
 
 void dfs( int src, stack < int > &S ){
-  vis[src] = SV;
-  debug( src );
   for( int son: G[src]){
-    if( vis[ son ] == NV){
-        dfs( son, S );
-    }
+    if( vis[ son ] == NV)
+      dfs( son, S );
   }
   vis[src] = V;
   S.push( src );
@@ -28,11 +25,8 @@ void tsort( ){
   vis.resize( N );
   vis.assign( N, NV);
   for( int i = 0; i < N; i++){
-    if( vis[i]  == NV){
-      dfs( i, S);
-    }
+    if( vis[i]  == NV)   dfs( i, S);
   }
-
   while(!S.empty()){
     cout << S.top() <<endl;
     S.pop();

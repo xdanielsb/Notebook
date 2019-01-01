@@ -3,7 +3,9 @@
 using namespace std;
 typedef vector<int> vi;
 
-//Complexity: O(N + M)
+/*
+ *  Complexity: O(N + M)
+*/
 vi z_val(string s){
   int n = s.size(), L =0, R=0;
   vi z(n);
