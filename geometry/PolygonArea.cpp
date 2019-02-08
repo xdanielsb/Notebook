@@ -7,6 +7,10 @@ using namespace std;
 typedef long double ld;
 typedef pair <ld, ld> point;
 typedef vector < point > polygon;
+
+/*
+ Complexity O(n)
+*/
 inline  point diff(point o, point d){
   return mp(d.f-o.f, d.s - o.s) ;
 }

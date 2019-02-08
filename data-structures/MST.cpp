@@ -1,6 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
-  ///          from, to, weight 
+
+/*
+ Complexity: nlog(n)
+*/
+  ///          from, to, weight
 typedef tuple< int,int,int > edge;
 typedef vector < int > vi;
 bool customSort(const edge &a,const edge & b){
@@ -19,7 +23,7 @@ vector< edge > mst( vector< edge > &edges , int n ){
   return res;
 }
 int main(){
-#ifdef LOCAL 
+#ifdef LOCAL
   freopen("in", "r", stdin);
 #endif
   int n, m;

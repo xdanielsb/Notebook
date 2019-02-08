@@ -5,7 +5,9 @@ typedef unsigned long long ll;
 
 ll dp[MAX];
 int vi[MAX];
-
+/*
+  Complexity: O(n ^ 2)
+*/
 ll catalan( int n){
   if ( n <= 1 ) return 1;
   if( vi[n] ) return dp[n];

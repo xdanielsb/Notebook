@@ -3,6 +3,9 @@
 using namespace std;
 typedef long long ll;
 typedef vector < ll> vll;
+/*
+ Complexity Query O(n)
+*/
 struct fw {
   int n; vll data;
   fw(int _n) : n(_n), data(vll(_n)) { }
@@ -13,7 +16,7 @@ struct fw {
    }
   }
   void update_range( int l, int r, ll by){
-    update(l, by); 
+    update(l, by);
     update(r+1, -by);
   }
   ll query(int at) {
@@ -45,5 +48,5 @@ int main(){
       cout <<  fen->query(a) << endl;
     }
   }
-  
+
 }

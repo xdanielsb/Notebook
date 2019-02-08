@@ -1,9 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef vector<int> vi;
+/*
+ Complexity O(log(n))
+*/
 struct union_find {
   vi p;
-  //initialize all elements with -1
   union_find(int n) : p(n, -1) { }
   int find(int x) {
     return p[x] < 0 ? x : p[x] = find(p[x]);
@@ -12,7 +14,8 @@ struct union_find {
     int xp = find(x), yp = find(y);
     if (xp == yp) return false;
     if (p[xp] > p[yp]) swap(xp,yp);
-    p[xp] += p[yp], p[yp] = xp; //add -1 if merge
+    p[xp] += p[yp];
+    p[yp] = xp; //add -1 if merge
     return true;
   }
   int size(int x) {
