@@ -7,7 +7,7 @@ int t[2 * N]; // limit
 
 
 //built the tree O(n)
-void built(){ 
+void built(){
   for (int i = n - 1; i > 0; i--) {
     t[i] = t[i << 1]+ t[i << 1 | 1];
   }
@@ -19,7 +19,6 @@ void update(int x, int y) {
     t[x >> 1] = t[x]+ t[x ^ 1];
   }
 }
-
 
 //operation on interval [l, r) O(log(n))
 int query(int l, int r) {
@@ -45,13 +44,12 @@ int main() {
     if( ty == 1){ // query
       cin >> l >> r; l--;
       cout << query( l, r ) << endl;
-    }else if( ty == 2){ //update single value  
+    }else if( ty == 2){ //update single value
       cin >> pos >> val; // pos 1 indexed
       pos--;
       update(pos, val);
     }
   }
-  
+
   return 0;
 }
-
