@@ -1,26 +1,21 @@
 #include<bits/stdc++.h>
-#define MAX 35
 using namespace std;
-typedef unsigned long long ll;
-
-ll dp[MAX];
-int vi[MAX];
 /*
-  Complexity: O(n ^ 2)
+  Catalan
+  also 2n!/((n+1)! n!)
 */
-ll catalan( int n){
+ll C( int n){
   if ( n <= 1 ) return 1;
-  if( vi[n] ) return dp[n];
-  vi[n] = 1;
-  ll &res = dp[n];
+  ll res = 0;
   for( int i= 0; i < n; i++)
-    res += catalan(i) * catalan( n -i -1);
+    res += C(i) * C( n -i -1);
   return res;
 }
-int main(){
-  memset( dp, 0, sizeof(dp));
-  memset( vi, 0, sizeof(dp));
-  for( int i = 1; i < 10; i++)
-    cout << catalan( i ) <<endl;
-  return 0;
+/*
+  Super Catalan
+*/
+ll S( int n ){
+  if( n <=2 ) return 1;
+  ll res =((6*n-9)*S(n-1)-(n-3)*S(n-2))/n;
+  return res;
 }
