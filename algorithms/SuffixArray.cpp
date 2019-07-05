@@ -19,11 +19,15 @@ typedef vector<int> vi;
 
 /*
  * O( n*log(n) ) where n = |text|
- * sa[i] contains the starting position of the i-th smallest suffix in t, ensuring that for all 1 < i <= n, t[sa[i-1], n] < t[sa[i], n] holds.
+ * sa[i] contains the starting position of the i-th
+ * smallest suffix in t, ensuring that for all
+ * 1 < i <= n, t[sa[i-1], n] < t[sa[i], n] holds.
  * O( n ) where n = |text|
- * lcp[i] stores the lengths of the longest common prefixes between all pairs of consecutive suffixes in a sorted suffix array (needs sa).
+ * lcp[i] stores the lengths of the longest common
+ * prefixes between all pairs of consecutive suffixes
+ * in a sorted suffix array (needs sa).
  */
-int const MAXN = 1e5; 
+int const MAXN = 1e5;
 int n, mx;
 string t;
 int pos[ MAXN ], cnt[ MAXN ];
@@ -86,7 +90,7 @@ int main(){
 #ifdef LOCAL
   freopen("in", "r" , stdin);
 #endif
- 
+
   string word = "mississippi";
   build( word );
   rep(i,0, SIZE(word)){

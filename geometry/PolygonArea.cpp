@@ -7,7 +7,6 @@ using namespace std;
 typedef long double ld;
 typedef pair <ld, ld> point;
 typedef vector < point > polygon;
-
 /*
  Complexity O(n)
 */

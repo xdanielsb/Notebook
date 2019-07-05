@@ -1,4 +1,8 @@
-// compute the minimun lexicographical word in linear time, doing rotationsn 
+/* compute the minimun lexicographical word
+  in linear time, doing rotations
+  UVA 719
+*/
+
 int compute( string &s ){
   int n = size( s );
   s = s+s;

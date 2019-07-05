@@ -1,16 +1,5 @@
 #include <iostream>
 using namespace std;
-/*
- * given the polynomial f(x) = 2x^3 - 6 x^2 - 2x -1
- * f(8) = ?
- *  8  | X^3 X^2  X^1 X^0
- *     |  2  -6   -2  -1
- *     |      16  80  624
- *     ___________________
- *        2   10  78   623
- * f(8) = 623
- * Complexity O(n)
- */
 typedef long long ll;
 ll Horner( ll a[], ll n, ll x ){
   ll result = a[n];
@@ -19,10 +8,10 @@ ll Horner( ll a[], ll n, ll x ){
   return result;
 }
 int main(){
-  ll grade = 3;
-        //-1 -2x -6x^2 +2x^3
+  int n = 4;
+          //-1 -2x -6x^2 +2x^3
   ll a[] = {-1,-2,-6,2};
   ll x = 8;
-  cout << Horner (a, grade, x);
+  cout << Horner (a, n-1, x);
   return 0;
 }

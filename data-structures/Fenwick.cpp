@@ -4,7 +4,8 @@ using namespace std;
 typedef long long ll;
 typedef vector < ll> vll;
 /*
- Complexity Query O(n)
+ Complexity Query O(log(n))
+ UVA 12086
 */
 struct fw {
   int n; vll data;

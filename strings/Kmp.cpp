@@ -9,13 +9,13 @@ int* compute(const string &t) {
   int *p = new int[m];
   p[0]= 0;
   rep( i , 1 , m){
-    p[i] = p[ i - 1 ]; 
+    p[i] = p[ i - 1 ];
     while( p[i] > 0 && t[i] != t[ p[i] ] ){
       p[i] = p[ p[i] -1 ];
     }
     if( t[i] == t[ p[i] ] ) p[i]++;
   }
- return p; 
+ return p;
 }
 
 
@@ -23,7 +23,6 @@ int match( const string &ne, const string &ha ){
   debug( ne ); debug( ha);
   int m = ne.size(),  n = ha.size();
   int *p = compute( ne  );
-
   int s = 0;
   rep( i, 0, n){
     while( s > 0 && ha[ i ] != ne[  s ] )
@@ -36,7 +35,7 @@ int match( const string &ne, const string &ha ){
 }
 
 int main(){
-#ifdef LOCAL 
+#ifdef LOCAL
   freopen("in", "r" , stdin);
 #endif
 
