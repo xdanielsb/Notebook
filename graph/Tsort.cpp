@@ -45,8 +45,6 @@ int main(){
   G[5].PB( 2 );
   G[3].PB( 2 );
 
-
   tsort( );
-
   return 0;
 }

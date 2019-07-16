@@ -1,48 +1,50 @@
 #include <bits/stdc++.h>
-#define V 9
-int minDis(int dist[], bool is_set[]){
-  int min = INT_MAX, min_index;
-  for (int v = 0; v < V; v++){
-    if (is_set[v] == false && dist[v] <= min){
-      min = dist[v], min_index = v;
+#define pb push_back
+using namespace std;
+#define INF 2e7
+struct edge{
+	int to, weight;
+	edge(){}
+	edge(int _to, int _weight){
+		to = _to;
+		weight = _weight;
+	}
+	bool operator < (edge e) const {
+		return weight > e.weight;
+	}
+};
+typedef vector < edge > ve;
+typedef vector < ve > vve;
+typedef vector < int > vi;
+typedef priority_queue< edge> pq;
+inline void dijkstra(vve &adj, int src, int num_nodes){
+  vi dist = vi(num_nodes+1,INF);
+	pq  q;
+  q.push(edge(src,0));
+  dist[src] = 0;
+  while(!q.empty()){
+    edge top = q.top();
+    q.pop();
+    int u = top.to;
+    for(int i=0;i<adj[u].size();i++){
+      int v = adj[u][i].to;
+      if(dist[u] + adj[u][i].weight < dist[v]){
+        dist[v] = dist[u] + adj[u][i].weight;
+        q.push(edge(v,dist[v]));
+      }
     }
   }
-  return min_index;
 }
 
-inline  void dijkstra(int graph[V][V], int src){
-  int dist[V];
-  bool is_set[V];
-  for (int i = 0; i < V; i++){
-    dist[i] = INT_MAX, is_set[i] = false;
-  }
-  dist[src] = 0;
-  for (int count = 0; count < V-1; count++){
-   int u = minDis(dist, is_set);
-   is_set[u] = true;
-   for (int v = 0; v < V; v++){
-     if (!is_set[v] && graph[u][v]
-             && dist[u] != INT_MAX
-             && dist[u]+graph[u][v] < dist[v])
-        dist[v] = dist[u] + graph[u][v];
-   }
-  }
-  for( int i= 0; i < V; i++) 
-    cout << i << " " << dist[i] <<endl;
-}
 int main(){
-   int graph[V][V] =
-    {{0, 4, 0, 0, 0, 0, 0, 8, 0},
-     {4, 0, 8, 0, 0, 0, 0, 11, 0},
-     {0, 8, 0, 7, 0, 4, 0, 0, 2},
-     {0, 0, 7, 0, 9, 14, 0, 0, 0},
-     {0, 0, 0, 9, 0, 10, 0, 0, 0},
-     {0, 0, 4, 14, 10, 0, 2, 0, 0},
-     {0, 0, 0, 0, 0, 2, 0, 1, 6},
-     {8, 11, 0, 0, 0, 0, 1, 0, 7},
-     {0, 0, 2, 0, 0, 0, 6, 7, 0}
-    };
-    //distances from all points to 1
-    dijkstra(graph, 1);
-    return 0;
+	int nodes =5;
+  vve adj(nodes);
+	//from             to - weight
+	adj[0].pb(edge(1, 6));
+	adj[0].pb(edge(2, 2));
+	adj[1].pb(edge(3, 5));
+	adj[1].pb(edge(4, 7));
+  int src = 1;
+  dijkstra(adj, src, nodes);
+  return 0;
 }

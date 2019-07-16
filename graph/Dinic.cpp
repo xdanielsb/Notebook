@@ -2,7 +2,8 @@
 #define debug( x ) cout << #x << " = " << x <<endl;
 using namespace std;
 /// Complexity: O(|E|*|V|^2)
-/// Implementation Notebook UNAL 
+/// Implementation Notebook UNAL
+// Codeforces 1082/G
 typedef long long ll;
 const int inf = 1e9+17;
 struct edge { ll v, cap, inv, flow; };
@@ -62,10 +63,9 @@ int main(){
     int nn = n+m+20;
     int s = nn-1, t = nn-2;
     network nt( nn );
-    for( int i= 0; i< n; i++){
+    for( int i= 0; i< n; i++){ // weights
       cin >> ai;
       nt.add_edge( i, t, ai);
-      /* cout<< i << " " << t << " " << ai << endl; */
     }
     int u , v, w;
     ll sum = 0;
@@ -73,7 +73,6 @@ int main(){
       cin >> u >> v >> w;
       --u; --v;
       sum += w;
-      /* cout<< s << " " << (i+n) << " " << w << endl; */
       nt.add_edge( s, i+n , w);
       nt.add_edge( i+n, u, inf);
       nt.add_edge( i+n, v, inf);
